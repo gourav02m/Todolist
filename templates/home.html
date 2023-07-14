@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+	<link rel="stylesheet" href="{% static 'vendors/themify-icons/css/themify-icons.css' %}">
+    <!-- Bootstrap + Meyawo main styles -->
+    <link rel="stylesheet" href="{% static 'css/meyawo.css' %}">
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <!-- Page Navbar -->
+   
+
+    <!-- page header -->
+    <header id="home" class="header">
+        <div class="overlay"></div>
+        <div class="header-content container">
+            <h1 class="header-title">
+                <span class="up">HI!</span>
+                <span class="down">{{user.first_name|capfirst }}</span>
+            </h1>
+          
+        </div>              
+    </header><!-- end of page header -->
+  
+
+    <!-- section -->
+    <section class="section-sm bg-primary">
+                <button ><a class="btn btn-primary" href="{% url 'logout' %}">Logout</a></button>
+
+        <!-- container -->
+        <div class="container text-center text-sm-left">
+            <!-- row -->
+            <div class="row align-items-center">
+                
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </section> <!-- end of section -->
+
+        <!-- contact section -->
+    <section class="section" id="contact">
+        <div class="container text-center">
+            <!-- <p class="section-subtitle">How can you communicate?</p>
+            <h6 class="section-title mb-5">Write Here</h6> -->
+            <!-- contact form -->
+            <form action="" method="POST" role="form" class="contact-form col-md-10 col-lg-8 m-auto">
+                {% csrf_token %}
+                <div class="">
+                    <div class="form-group col-sm-6">
+                        <!-- <input type="text" size="50" name="username" class="form-control" placeholder="Your Name" required>                  -->
+                    </div>
+                    <!-- <div class="form-group col-sm-6">
+                        <input type="email" class="form-control" placeholder="Enter Email"requried>                 
+                    </div> -->
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingcompany" name="todolist" placeholder="Post Tittle">
+                        <!-- <label for="floatingcompany light-300">Post title</label> -->
+                    </div></br>
+                    <div class="form-group col-sm-12">
+                        <textarea name="todo" id="comment" rows="6" class="form-control" placeholder="Write Something"></textarea>
+                    </div>
+                    <div class="form-group col-sm-12 mt-3">
+                        <!-- <input type="submit" value="Send Message" class="btn btn-outline-primary rounded"> -->
+                        <button type="submit" class="btn btn-outline-primary rounded">Add</button>            
+                    </div>
+                </div>  
+            </form><!-- end of contact form -->
+        </div><!-- end of container -->
+    </section><!-- end of contact section -->
+  
+    
+    <!-- blog section -->
+    <section class="section" id="blog">
+        <!-- container -->
+        <div class="container text-center">
+            <!-- <p class="section-subtitle">Recent Posts?</p> -->
+            <h6 class="section-title mb-6">TODO</h6>
+            
+            {% for sts in st %}
+            <div class="blog-card">
+               
+                
+                <div class="blog-card-body">
+                    <h5 class="blog-card-title">{{sts.todolist}}</h6>
+
+                    <p class="blog-card-caption">
+                        <a href="#">{{user.username}}</a>
+                        <!-- <a href="#"><i class="ti-heart text-danger"></i> 456</a> -->
+                        <a href="#"><i class="ti-comment"></i> {{sts.date_time}} </a>
+                    </p>
+                    
+                    <p>{{sts.todo}}</p>
+                        
+                    <div>
+                        <form method="POST" action="{{sts.id}}">
+                        {% csrf_token %}
+                            <!-- <input type="Submit" name="Update" placeholder="Update" value="Update" > -->
+                            <input type="Submit" name="delete" class="btn btn-outline-primary rounded" placeholder="Delete" value="Remove" >
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div>
+                            
+                        <!-- end of blog wrapper -->
+            {% endfor %}
+        </div><!-- end of container -->
+                            
+    </section><!-- end of blog section -->
+   
+
+	
+	
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Meyawo landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Supersonicblog</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="{% static 'vendors/themify-icons/css/themify-icons.css' %}">
+    <!-- Bootstrap + Meyawo main styles -->
+    <link rel="stylesheet" href="{% static 'css/meyawo.css' %}">
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+
+        <!-- contact section -->
+    <section class="section" id="contact">
+        <div class="container text-center">
+            <!-- <p class="section-subtitle">How can you communicate?</p> -->
+            <h6 class="section-title mb-5">Log In</h6>
+            <!-- contact form -->
+            <form action="" method="post" role="form" class="contact-form col-md-10 col-lg-8 m-auto">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <input type="text" name="username" class="form-control" placeholder="Enter UserName" required>                 
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <input type="Password" class="form-control" name="password" placeholder="Enter Password"requried>                 
+                    </div>
+                    
+                    <div class="form-group col-sm-12 mt-3">
+                        <!-- <input type="submit" value="Send Message" class="btn btn-outline-primary rounded"> -->
+                        <button type="submit" class="btn btn-outline-primary rounded">Log In</button>            
+                    </div>
+                    <div>
+                            {% for message in messages %}
+                                <h3>{{ message }}</h3>
+                            {% endfor %}
+                    </div>
+                </div>  
+            </form><!-- end of contact form -->
+
+            <div>
+                <form action="{% url 'register' %}">
+                    <button type="submit" class="btn btn-outline-primary rounded">Registration</button>
+                </form>
+            </div>
+        </div><!-- end of container -->
+    </section><!-- end of contact section -->
+  
+    
+    <!-- blog section -->
+    
+
+
+    <!-- footer -->
+   
+    <!-- core  -->
+    <script src="{% static 'assets/vendors/jquery/jquery-3.4.1.js' %}"></script>
+    <script src="{% static 'assets/vendors/bootstrap/bootstrap.bundle.js' %}"></script>
+
+    <!-- bootstrap 3 affix -->
+    <script src="{% static 'assets/vendors/bootstrap/bootstrap.affix.js' %}"></script>
+
+    <!-- Meyawo js -->
+    <script src="{% static 'assets/js/meyawo.js' %}"></script>
+
+</body>
+</html>
