@@ -1,7 +1,2 @@
 # Todolist
-# Todolist
-# Todolist
-# Todolist
-# Todolist
-# Todolist
-# Todolist
+Todolist using Django Framework With Authentication
